@@ -1,0 +1,32 @@
+.task-list-container {
+  background-color: fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: clamp(100%, 100%, 600px);
+  padding: 30px;
+  margin-top: 20px;
+
+  h2 {
+    color: #34495e;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+  }
+
+  .task-items-wrapper {
+    p {
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  .no-tasks-message {
+    text-align: center;
+    color: #7f8c8d;
+    font-style: italic;
+  }
+}

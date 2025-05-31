@@ -1,0 +1,14 @@
+<div class="task-list-container">
+  <h2>Your Tasks</h2>
+  <div
+    *ngIf="tasks && tasks.length > 0; else noTasks"
+    class="task-items-wrapper"
+  >
+    <p *ngFor="let task of tasks">
+      {{ task.title }} - {{ task.completed ? "Completed" : "Pending" }}
+    </p>
+  </div>
+  <ng-template #noTasks>
+    <p class="no-tasks-message">No tasks found. Time to add some!</p>
+  </ng-template>
+</div>
