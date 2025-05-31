@@ -1,0 +1,59 @@
+.task-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 10px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  &.completed {
+    background-color: #e8f5e9;
+    border-color: #a5d6a7;
+    .task-title {
+      text-decoration: line-through;
+      color: #7f8c8d;
+    }
+  }
+
+  .task-checkbox {
+    margin-right: 15px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .task-title {
+    flex-grow: 1;
+    font-size: 1.1em;
+    word-break: break-word;
+  }
+
+  .delete-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 15px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    .delete-icon {
+      width: 20px;
+      height: 20px;
+      filter: grayscale(100%) opacity(0.7);
+      transition: filter 0.2s ease;
+    }
+
+    &:hover .delete-icon {
+      filter: grayscale(0%) opacity(1);
+    }
+  }
+}

@@ -1,0 +1,11 @@
+<div class="task-item" [class.completed]="task.completed">
+  <input
+    type="checkbox"
+    [checked]="task.completed"
+    (change)="onToggleCompleted()"
+    class="task-checkbox"
+  /><span class="task-title">{{ task.title }}</span
+  ><button class="delete-button" (click)="onDeleteTask()">
+    <mat-icon aria-label="Delete Task" class="delete-icon">delete</mat-icon>
+  </button>
+</div>

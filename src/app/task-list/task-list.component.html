@@ -4,9 +4,12 @@
     *ngIf="tasks && tasks.length > 0; else noTasks"
     class="task-items-wrapper"
   >
-    <p *ngFor="let task of tasks">
-      {{ task.title }} - {{ task.completed ? "Completed" : "Pending" }}
-    </p>
+    <app-task-item
+      *ngFor="let task of tasks"
+      [task]="task"
+      (toggleCompleted)="onToggleTaskComplete($event)"
+      (deleteTask)="onDeleteTask($event)"
+    />
   </div>
   <ng-template #noTasks>
     <p class="no-tasks-message">No tasks found. Time to add some!</p>
