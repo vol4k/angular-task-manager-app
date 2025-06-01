@@ -18,11 +18,17 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class TaskItemComponent {
   @Input({ required: true }) task!: Task;
-  @Output() toggleCompleted = new EventEmitter<string>();
+  @Output() toggleCompleted = new EventEmitter<{
+    taskId: string;
+    completed: boolean;
+  }>();
   @Output() deleteTask = new EventEmitter<string>();
 
   onToggleCompleted(): void {
-    this.toggleCompleted.emit(this.task.id);
+    this.toggleCompleted.emit({
+      taskId: this.task.id,
+      completed: !this.task.completed,
+    });
   }
 
   onDeleteTask(): void {

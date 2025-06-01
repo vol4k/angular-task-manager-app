@@ -25,9 +25,19 @@ export class TaskListComponent {
     this.store.dispatch(TaskActions.loadTasks());
   }
 
-  onToggleTaskComplete(taskId: string): void {
-    console.log('Toggle complete for task ID:', taskId);
-    this.store.dispatch(TaskActions.toggleTaskComplete({ taskId }));
+  onToggleTAskComplete(event: { taskId: string; completed: boolean }): void {
+    console.log(
+      'Toggle complete for task ID:',
+      event.taskId,
+      'New status:',
+      event.completed
+    );
+    this.store.dispatch(
+      TaskActions.toggleTaskComplete({
+        taskId: event.taskId,
+        completed: event.completed,
+      })
+    );
   }
 
   onDeleteTask(taskId: string): void {

@@ -30,7 +30,7 @@ export const addTaskFailure = createAction(
 
 export const toggleTaskComplete = createAction(
   '[Task Item] Toggle Task Complete',
-  props<{ taskId: string }>()
+  props<{ taskId: string; completed: boolean }>()
 );
 
 export const toggleTaskCompleteSuccess = createAction(
