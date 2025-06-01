@@ -1,14 +1,16 @@
 <div class="task-list-container">
   <h2>Your Tasks</h2>
-  <div *ngIf="tasks$ | async as tasks; else noTasks" class="task-items-wrapper">
-    <app-task-item
-      *ngFor="let task of tasks"
-      [task]="task"
-      (toggleCompleted)="onToggleTaskComplete($event)"
-      (deleteTask)="onDeleteTask($event)"
-    />
+  <div *ngIf="tasks$ | async as tasks; else noTasksBlock">
+    <div *ngIf="tasks.length > 0; else noTasksBlock" class="task-items-wrapper">
+      <app-task-item
+        *ngFor="let task of tasks"
+        [task]="task"
+        (toggleCompleted)="onToggleTaskComplete($event)"
+        (deleteTask)="onDeleteTask($event)"
+      />
+    </div>
   </div>
-  <ng-template #noTasks>
+  <ng-template #noTasksBlock>
     <p class="no-tasks-message">No tasks found. Time to add some!</p>
   </ng-template>
 </div>
