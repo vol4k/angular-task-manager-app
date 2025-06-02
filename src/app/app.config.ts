@@ -10,6 +10,7 @@ import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { tasksReducer } from './state/tasks/tasks.reducer';
+import { TasksEffects } from './state/tasks/tasks.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,7 +19,7 @@ export const appConfig: ApplicationConfig = {
     provideStore({
       tasks: tasksReducer,
     }),
-    provideEffects([]),
+    provideEffects([TasksEffects]),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),

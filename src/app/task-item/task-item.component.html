@@ -2,7 +2,7 @@
   <input
     type="checkbox"
     [checked]="task.completed"
-    (change)="onToggleCompleted()"
+    (change)="onToggleComplete()"
     class="task-checkbox"
   /><span class="task-title">{{ task.title }}</span
   ><button class="delete-button" (click)="onDeleteTask()">

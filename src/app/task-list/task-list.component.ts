@@ -4,8 +4,8 @@ import { Task } from '../models/task.model';
 import { TaskItemComponent } from '../task-item/task-item.component';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import * as TaskSelectors from '../state/tasks/task.selectors';
-import * as TaskActions from '../state/tasks/task.actions';
+import * as TasksSelectors from '../state/tasks/tasks.selectors';
+import * as TasksActions from '../state/tasks/tasks.actions';
 
 @Component({
   selector: 'app-task-list',
@@ -14,15 +14,15 @@ import * as TaskActions from '../state/tasks/task.actions';
   styleUrl: './task-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TaskListComponent {
+export class TaskListComponent implements OnInit {
   tasks$: Observable<Task[]>;
 
   constructor(private store: Store) {
-    this.tasks$ = this.store.select(TaskSelectors.selectAll);
+    this.tasks$ = this.store.select(TasksSelectors.selectAll);
   }
 
   ngOnInit(): void {
-    this.store.dispatch(TaskActions.loadTasks());
+    this.store.dispatch(TasksActions.loadTasks());
   }
 
   onToggleTaskComplete(event: { taskId: string; completed: boolean }): void {
@@ -33,7 +33,7 @@ export class TaskListComponent {
       event.completed
     );
     this.store.dispatch(
-      TaskActions.toggleTaskComplete({
+      TasksActions.toggleTaskComplete({
         taskId: event.taskId,
         completed: event.completed,
       })
@@ -42,6 +42,6 @@ export class TaskListComponent {
 
   onDeleteTask(taskId: string): void {
     console.log('Delete task ID:', taskId);
-    this.store.dispatch(TaskActions.deleteTask({ taskId }));
+    this.store.dispatch(TasksActions.deleteTask({ taskId }));
   }
 }
